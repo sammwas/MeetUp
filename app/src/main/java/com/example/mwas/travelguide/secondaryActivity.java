@@ -2,8 +2,11 @@ package com.example.mwas.travelguide;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -23,5 +26,12 @@ public class secondaryActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         TravelGuideArrayAdapter adapter = new TravelGuideArrayAdapter(this,simple_list_item_1,mLocations,mPlacesToGo);
         mListActivity.setAdapter(adapter);
+        mListActivity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String place = ((TextView)view).getText().toString();
+                Toast.makeText(secondaryActivity.this, place, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
