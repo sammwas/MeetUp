@@ -26,12 +26,25 @@
         android:layout_height="wrap_content"
         android:text="Travel Guide"
         android:textSize="25sp"
+        android:layout_marginTop="26dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        android:layout_alignLeft="@+id/findActivityButton"
+        android:layout_alignStart="@+id/findActivityButton" />
+    <EditText
+        android:id="@+id/locationEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:padding="5dp"
+        android:hint="Enter Location"
+        android:inputType="textPersonName"
+        android:layout_marginBottom="14dp"
+        android:layout_above="@+id/findActivityButton"
+        android:layout_centerHorizontal="true" />
+
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/findActivityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Find Activity"
