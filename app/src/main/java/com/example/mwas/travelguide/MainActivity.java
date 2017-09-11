@@ -1,6 +1,7 @@
 package com.example.mwas.travelguide;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mFindActivityButton.setOnClickListener(this);
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Enlighten your Destiny.ttf");
+        mAppNameTextView.setTypeface(typeface);
     }
 
 

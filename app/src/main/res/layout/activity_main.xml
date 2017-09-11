@@ -24,12 +24,15 @@
         android:id="@+id/appNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:text="Travel Guide"
-        android:textSize="25sp"
-        android:layout_marginTop="26dp"
+        android:textColor="@android:color/black"
+        android:textSize="60sp"
         android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/findActivityButton"
-        android:layout_alignStart="@+id/findActivityButton" />
+        android:layout_alignLeft="@+id/locationEditText"
+        android:layout_alignStart="@+id/locationEditText"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp" />
     <EditText
         android:id="@+id/locationEditText"
         android:layout_width="wrap_content"
