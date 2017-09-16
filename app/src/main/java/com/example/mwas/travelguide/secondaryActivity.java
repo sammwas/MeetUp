@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,6 +25,7 @@ public class secondaryActivity extends AppCompatActivity {
     @Bind(R.id.listActivity) ListView mListActivity;
 
     public static final String TAG = secondaryActivity.class.getSimpleName();
+    public ArrayList<MeetUp> mMeetUps = new ArrayList<>();
 
     private String[] mLocations = new String[] {"Kabete","Ngong Rd","Kiambu Rd","Langata","Karen","Mombasa Rd","Upper Hill"};
     private String[] mPlacesToGo = new String[] {"Kereita(zip lining,trekking,cycling)","Paint Ball Kenya(paint balling)","Karura Forest(cycling,trekking)","GP Karting(Go Karting)","Malo Stables(horse riding)","Panari Hotel(ice skating)","Kenya Regiment Club(shooting range)"};
@@ -49,7 +51,7 @@ public class secondaryActivity extends AppCompatActivity {
     }
 
     public void getMeetUp() {
-        MeetUpService meetUpService = new MeetUpService();
+        final MeetUpService meetUpService = new MeetUpService();
         meetUpService.findMeetUp(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -60,7 +62,11 @@ public class secondaryActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 try {
                     String jsonData = response.body().string();
-                    Log.v(TAG, jsonData);
+                    if(response.isSuccessful()) {
+                        Log.v(TAG,jsonData);
+                        mMeetUps = meetUpService.processResults(response);
+
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
