@@ -4,13 +4,19 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.IOException;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     @Bind(R.id.appNameTextView) TextView mAppNameTextView;
@@ -25,7 +31,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mFindActivityButton.setOnClickListener(this);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Enlighten your Destiny.ttf");
         mAppNameTextView.setTypeface(typeface);
+
     }
+
 
 
     public void onClick(View face){

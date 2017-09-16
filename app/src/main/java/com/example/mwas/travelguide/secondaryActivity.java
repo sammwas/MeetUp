@@ -2,6 +2,7 @@ package com.example.mwas.travelguide;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -39,11 +40,15 @@ public class secondaryActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String place = ((TextView)view).getText().toString();
                 Toast.makeText(secondaryActivity.this, place, Toast.LENGTH_LONG).show();
+
             }
         });
+
+        getMeetUp();
+
     }
 
-    private void getMeetUp() {
+    public void getMeetUp() {
         MeetUpService meetUpService = new MeetUpService();
         meetUpService.findMeetUp(new Callback() {
             @Override
@@ -53,8 +58,18 @@ public class secondaryActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    String jsonData = response.body().string();
+                    Log.v(TAG, jsonData);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
             }
         });
     }
+
+
+
+
 }
