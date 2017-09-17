@@ -11,6 +11,6 @@ import retrofit2.http.Query;
 
 public interface ApiInterface {
 
-    @GET("concierge/")
+    @GET("concierge")
     Call<MeetUpModelResponse> getConcierge(@Query("api_key") String apiKey);
 }

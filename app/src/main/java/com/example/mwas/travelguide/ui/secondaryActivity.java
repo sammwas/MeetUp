@@ -29,7 +29,7 @@ public class secondaryActivity extends AppCompatActivity {
 
     public static final String TAG = secondaryActivity.class.getSimpleName();
     public ArrayList<MeetUp> mMeetUps = new ArrayList<>();
-    private final static String API_KEY = "";
+    private final static String API_KEY = "2b67ac4d123c2c4d43e085d515";
 
 
     @Override
@@ -44,6 +44,8 @@ public class secondaryActivity extends AppCompatActivity {
             return;
         }
 
+
+
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
 
@@ -52,13 +54,19 @@ public class secondaryActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<MeetUpModelResponse>call, Response<MeetUpModelResponse> response) {
                 List<MeetUpModel> results = response.body().getResults();
+
                 Log.d(TAG, "Here are the events found: " + results.size());
+
             }
 
             @Override
             public void onFailure(Call<MeetUpModelResponse>call, Throwable t) {
                 // Log error here since request failed
                 Log.e(TAG, t.toString());
+                for(int x=0;x<20;x++){
+                    Log.d("try","my api failure");
+                }
+
             }
         });
     }
