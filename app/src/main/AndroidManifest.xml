@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,15 +20,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".secondaryActivity">
+        <activity android:name=".ui.secondaryActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.mwas.travelguide.MainActivity"></meta-data>
+                android:value="com.example.mwas.travelguide.ui.MainActivity"></meta-data>
         </activity>
-        <activity android:name=".ThirdActivity">
+        <activity android:name=".ui.ThirdActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.mwas.travelguide.MainActivity"></meta-data>
+                android:value="com.example.mwas.travelguide.ui.MainActivity"></meta-data>
         </activity>
     </application>
 

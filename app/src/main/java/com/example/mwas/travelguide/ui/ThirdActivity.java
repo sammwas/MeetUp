@@ -1,7 +1,9 @@
-package com.example.mwas.travelguide;
+package com.example.mwas.travelguide.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.mwas.travelguide.R;
 
 public class ThirdActivity extends AppCompatActivity {
 

@@ -1,6 +1,9 @@
-package com.example.mwas.travelguide;
+package com.example.mwas.travelguide.services;
 
 import android.util.Log;
+
+import com.example.mwas.travelguide.Constants;
+import com.example.mwas.travelguide.models.MeetUp;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,24 +51,20 @@ public class MeetUpService {
             if (response.isSuccessful()) {
                 JSONObject meetUpJSON = new JSONObject(jsonData);
                 JSONArray resultsJSON = meetUpJSON.getJSONArray("results");
-                for (int i = 0; i < resultsJSON.length(); i++) {
+                for (int i = 1; i < resultsJSON.length(); i++) {
                     JSONObject meetingJSON = resultsJSON.getJSONObject(i);
                     String name = meetingJSON.getString("name");
-                    String status = meetingJSON.getString("status");
+//                    String status = meetingJSON.getString("status");
                     String description = meetingJSON.getString("description");
 
-                    ArrayList<String> venue = new ArrayList<>();
-                    JSONArray venueJSON = meetingJSON.getJSONArray("venue");
-                    for (int y = 0; y < venueJSON.length(); y++) {
-                        venue.add(venueJSON.getJSONArray(y).toString());
-                    }
+                    String venue = meetingJSON.getJSONObject("venue").getString("name");
+                    String venue1 = meetingJSON.getJSONObject("venue").getString("address_1");
 
-                    ArrayList<String> group = new ArrayList<>();
-                    JSONArray groupJSON = meetingJSON.getJSONArray("group");
-                    for (int y = 0; y < groupJSON.length(); y++) {
-                        group.add(groupJSON.getJSONArray(y).toString());
-                    }
-                    MeetUp meetUp = new MeetUp(name, status, description, venue, group);
+                    String group = meetingJSON.getJSONObject("group").getString("join_mode");
+                    String group1 = meetingJSON.getJSONObject("group").getString("name");
+
+                    MeetUp meetUp = new MeetUp(name, description, venue, venue1, group, group1);
+
                     meetUps.add(meetUp);
                 }
             }
