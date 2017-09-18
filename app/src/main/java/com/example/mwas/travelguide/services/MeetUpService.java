@@ -51,19 +51,34 @@ public class MeetUpService {
             if (response.isSuccessful()) {
                 JSONObject meetUpJSON = new JSONObject(jsonData);
                 JSONArray resultsJSON = meetUpJSON.getJSONArray("results");
-                for (int i = 1; i < resultsJSON.length(); i++) {
+                for (int i = 0; i < resultsJSON.length(); i++) {
                     JSONObject meetingJSON = resultsJSON.getJSONObject(i);
+
                     String name = meetingJSON.getString("name");
-//                    String status = meetingJSON.getString("status");
-                    String description = meetingJSON.getString("description");
 
-                    String venue = meetingJSON.getJSONObject("venue").getString("name");
-                    String venue1 = meetingJSON.getJSONObject("venue").getString("address_1");
+                    String description = meetingJSON.optString("description");
 
-                    String group = meetingJSON.getJSONObject("group").getString("join_mode");
-                    String group1 = meetingJSON.getJSONObject("group").getString("name");
+                    String venue = "";
+                    if(meetingJSON.has("venue")) {
+                        venue = meetingJSON.getJSONObject("venue").getString("name");
+                    }
 
-                    MeetUp meetUp = new MeetUp(name, description, venue, venue1, group, group1);
+                    String venue1="";
+                    if(meetingJSON.has("venue")) {
+                        venue1 = meetingJSON.getJSONObject("venue").getString("address_1");
+                    }
+
+                    String group="";
+                    if(meetingJSON.has("group")) {
+                        group = meetingJSON.getJSONObject("group").getString("join_mode");
+                    }
+
+                    String group1="";
+                    if(meetingJSON.has("group")) {
+                        group1 = meetingJSON.getJSONObject("group").getString("name");
+                    }
+
+                        MeetUp meetUp = new MeetUp(name, description, venue, venue1, group, group1);
 
                     meetUps.add(meetUp);
                 }

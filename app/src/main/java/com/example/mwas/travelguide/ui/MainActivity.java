@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View face){
         if(face == mFindActivityButton) {
             String location = mLocationEditText.getText().toString();
-            Intent intent = new Intent(MainActivity.this, secondaryActivity.class);
+            Intent intent = new Intent(MainActivity.this, ThirdActivity.class);
             intent.putExtra("location", location);
             startActivity(intent);
         }
