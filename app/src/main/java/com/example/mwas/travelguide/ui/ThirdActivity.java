@@ -2,12 +2,15 @@ package com.example.mwas.travelguide.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.mwas.travelguide.R;
+import com.example.mwas.travelguide.adapters.MeetUpListAdapter;
 import com.example.mwas.travelguide.models.MeetUp;
 import com.example.mwas.travelguide.services.MeetUpService;
 
@@ -25,7 +28,9 @@ import okhttp3.Response;
 public class ThirdActivity extends AppCompatActivity {
     public static final String TAG = ThirdActivity.class.getSimpleName();
     public ArrayList<MeetUp> mMeetUps = new ArrayList<>();
-    @Bind(R.id.meetUpListActivity) ListView mMeetUpListActivity;
+    private MeetUpListAdapter mAdapter;
+//    @Bind(R.id.meetUpListActivity) ListView mMeetUpListActivity;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,12 +53,12 @@ public class ThirdActivity extends AppCompatActivity {
                 ThirdActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        String[] meetUpNames = new String[mMeetUps.size()];
-                        for(int i=0; i<meetUpNames.length; i++){
-                            meetUpNames[i] = mMeetUps.get(i).getName();
-                        }
-                        ArrayAdapter adapter = new ArrayAdapter(ThirdActivity.this,android.R.layout.simple_list_item_1,meetUpNames);
-                        mMeetUpListActivity.setAdapter(adapter);
+                        mAdapter = new MeetUpListAdapter(getApplicationContext(), mMeetUps);
+                        mRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager =
+                                new LinearLayoutManager(ThirdActivity.this);
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
                         for (MeetUp meetUp : mMeetUps) {
 
                             Log.d(TAG, "name: " + meetUp.getName());

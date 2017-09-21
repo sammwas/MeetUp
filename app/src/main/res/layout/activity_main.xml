@@ -25,32 +25,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:text="Travel Guide"
+        android:text="MeetUp"
         android:textColor="@android:color/black"
         android:textSize="60sp"
         android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/locationEditText"
-        android:layout_alignStart="@+id/locationEditText"
         android:layout_marginLeft="17dp"
         android:layout_marginStart="17dp" />
-    <EditText
-        android:id="@+id/locationEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:padding="5dp"
-        android:hint="Enter Location"
-        android:inputType="textPersonName"
-        android:layout_marginBottom="14dp"
-        android:layout_above="@+id/findActivityButton"
-        android:layout_centerHorizontal="true" />
 
 
     <Button
         android:id="@+id/findActivityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Find Activity"
+        android:text="Find MeetUp"
         android:layout_marginBottom="46dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />

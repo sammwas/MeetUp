@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.mwas.travelguide.ui.ThirdActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recyclerView"/>
-
     <TextView
         android:id="@+id/thirdActivityTextView"
         android:layout_width="wrap_content"
@@ -20,17 +15,12 @@
         android:textStyle="bold"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
-    <TextView
-        android:id="@+id/labelTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/thirdActivityTextView"/>
 
-    <ListView
-        android:id="@+id/meetUpListActivity"
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/labelTextView"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView"
+        android:layout_below="@+id/thirdActivityTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

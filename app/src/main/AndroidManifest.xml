@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mwas.travelguide">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -23,13 +23,14 @@
         <activity android:name=".ui.secondaryActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.mwas.travelguide.ui.MainActivity"></meta-data>
+                android:value="com.example.mwas.travelguide.ui.MainActivity" />
         </activity>
         <activity android:name=".ui.ThirdActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.mwas.travelguide.ui.MainActivity"></meta-data>
+                android:value="com.example.mwas.travelguide.ui.MainActivity" />
         </activity>
+        <activity android:name=".ui.MeetUpDetailActivity"></activity>
     </application>
 
 </manifest>
