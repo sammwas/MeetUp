@@ -31,7 +31,7 @@ dependencies {
     })
 
     //retrofit, gson
-    
+
 
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
@@ -41,5 +41,8 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+    compile 'com.android.support:support-v4:26.+'
+    compile 'org.parceler:parceler-api:1.1.6'
+    annotationProcessor 'org.parceler:parceler:1.1.6'
     testCompile 'junit:junit:4.12'
 }

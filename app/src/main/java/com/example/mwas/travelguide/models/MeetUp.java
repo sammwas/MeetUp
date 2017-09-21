@@ -1,11 +1,14 @@
 package com.example.mwas.travelguide.models;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 
 /**
  * Created by mwas on 9/16/17.
  */
 
+@Parcel
 public class MeetUp {
     private String mName;
     private String mDescription;
@@ -23,6 +26,9 @@ public class MeetUp {
         this.mGroup = group;
         this.mGroup1 = group1;
     }
+
+    //empty meetup constructor needed by the Parceler library
+    public MeetUp() {}
 
     public String getName() {
         return mName;
