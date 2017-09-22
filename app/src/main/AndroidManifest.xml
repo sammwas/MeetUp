@@ -30,7 +30,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mwas.travelguide.ui.MainActivity" />
         </activity>
-        <activity android:name=".ui.MeetUpDetailActivity"></activity>
+        <activity android:name=".ui.MeetUpDetailActivity" />
+        <activity android:name=".ui.SavedMeetUpListActivity"></activity>
     </application>
 
 </manifest>
