@@ -17,6 +17,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     @Bind(R.id.appNameTextView) TextView mAppNameTextView;
     @Bind(R.id.findActivityButton) Button mFindActivityButton;
+    @Bind(R.id.savedMeetUpsButton) Button mSavedMeetUpsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mFindActivityButton.setOnClickListener(this);
+        mSavedMeetUpsButton.setOnClickListener(this);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Enlighten your Destiny.ttf");
         mAppNameTextView.setTypeface(typeface);
 
@@ -37,6 +39,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(MainActivity.this, ThirdActivity.class);
 //            intent.putExtra("location", location);
             startActivity(intent);
+        }
+
+        if(face == mSavedMeetUpsButton){
+            Intent intent = new Intent(MainActivity.this, SavedMeetUpListActivity.class);
+                   startActivity(intent);
         }
     }
 
