@@ -31,7 +31,8 @@
                 android:value="com.example.mwas.travelguide.ui.MainActivity" />
         </activity>
         <activity android:name=".ui.MeetUpDetailActivity" />
-        <activity android:name=".ui.SavedMeetUpListActivity"></activity>
+        <activity android:name=".ui.SavedMeetUpListActivity" />
+        <activity android:name=".ui.CreateAccountActivity"></activity>
     </application>
 
 </manifest>
