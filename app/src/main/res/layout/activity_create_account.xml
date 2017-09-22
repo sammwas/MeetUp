@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.epicodus.myrestaurants.ui.CreateAccountActivity"
+    tools:context="com.example.mwas.travelguide.ui.CreateAccountActivity"
     android:background="@color/colorPrimary">
 
     <LinearLayout
@@ -26,7 +26,6 @@
             android:padding="10dp"
             android:layout_marginBottom="10dp"
             android:textColor="@android:color/black"
-            android:textColorHint="@color/colorDivider"
             android:textSize="20sp" />
 
         <EditText
@@ -40,7 +39,6 @@
             android:padding="10dp"
             android:layout_marginBottom="10dp"
             android:textColor="@android:color/black"
-            android:textColorHint="@color/colorDivider"
             android:textSize="20sp" />
 
         <EditText
@@ -54,7 +52,6 @@
             android:padding="10dp"
             android:layout_marginBottom="10dp"
             android:textColor="@android:color/black"
-            android:textColorHint="@color/colorDivider"
             android:textSize="20sp" />
 
         <EditText
