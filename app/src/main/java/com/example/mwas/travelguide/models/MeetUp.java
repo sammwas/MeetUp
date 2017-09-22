@@ -10,12 +10,12 @@ import java.util.ArrayList;
 
 @Parcel
 public class MeetUp {
-    private String mName;
-    private String mDescription;
-    private String mVenue;
-    private String mVenue1;
-    private String mGroup;
-    private String mGroup1;
+     String mName;
+     String mDescription;
+     String mVenue;
+     String mVenue1;
+     String mGroup;
+     String mGroup1;
 
     public MeetUp(String name,String description, String venue, String venue1, String group, String group1){
         this.mName = name;

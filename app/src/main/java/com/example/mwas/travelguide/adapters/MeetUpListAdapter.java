@@ -1,6 +1,7 @@
 package com.example.mwas.travelguide.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,9 @@ import android.widget.TextView;
 
 import com.example.mwas.travelguide.R;
 import com.example.mwas.travelguide.models.MeetUp;
+import com.example.mwas.travelguide.ui.MeetUpDetailActivity;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -44,7 +48,8 @@ public class MeetUpListAdapter extends RecyclerView.Adapter<MeetUpListAdapter.Vi
         return mMeetUps.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
+    {
         @Bind(R.id.meetUpNameTextView) TextView mMeetUpNameTextView;
         @Bind(R.id.venueTextView) TextView mVenueTextView;
         @Bind(R.id.venueAddressTextView) TextView mVenueAddressTextView;
@@ -56,9 +61,17 @@ public class MeetUpListAdapter extends RecyclerView.Adapter<MeetUpListAdapter.Vi
             super(itemView);
             ButterKnife.bind(this,itemView);
             mContext = itemView.getContext();
-
+            itemView.setOnClickListener(this);
         }
 
+        @Override
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent  =  new Intent(mContext, MeetUpDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("meetUps", Parcels.wrap(mMeetUps));
+            mContext.startActivity(intent);
+        }
         public void bindMeetUp(MeetUp meetUp) {
             mMeetUpNameTextView.setText(meetUp.getName());
             mVenueTextView.setText(meetUp.getVenue());

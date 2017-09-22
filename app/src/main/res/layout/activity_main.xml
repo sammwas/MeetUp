@@ -24,13 +24,14 @@
         android:id="@+id/appNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="22dp"
         android:text="MeetUp"
         android:textColor="@android:color/black"
         android:textSize="60sp"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="17dp"
-        android:layout_marginStart="17dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="55dp"
+        android:layout_marginStart="55dp" />
 
 
     <Button

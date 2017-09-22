@@ -38,8 +38,7 @@
                 android:layout_below="@+id/meetUpNameTextView"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:textColor="@color/colorAccent"
-                android:textStyle="bold" />
+                android:textColor="@color/colorAccent"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -47,8 +46,7 @@
                 android:id="@+id/venueAddressTextView"
                 android:layout_below="@+id/venueTextView"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:textStyle="italic" />
+                android:layout_alignParentStart="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -58,6 +56,15 @@
                 android:layout_below="@+id/venueAddressTextView"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
+
+            <Button
+                android:id="@+id/saveMeetUpButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="91dp"
+                android:text="Save MeetUp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" />
         </RelativeLayout>
 
     </LinearLayout>

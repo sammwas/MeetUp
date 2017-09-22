@@ -36,7 +36,7 @@ public class MeetUpDetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mMeetUp = Parcels.unwrap(getArguments().getParcelable("restaurant"));
+        mMeetUp = Parcels.unwrap(getArguments().getParcelable("meetUp"));
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
