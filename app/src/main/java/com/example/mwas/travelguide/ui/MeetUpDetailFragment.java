@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.example.mwas.travelguide.Constants;
 import com.example.mwas.travelguide.R;
 import com.example.mwas.travelguide.models.MeetUp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -62,10 +64,15 @@ public class MeetUpDetailFragment extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View v){
         if(v == mSaveMeetUpButton){
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
             DatabaseReference meetUpRef = FirebaseDatabase.getInstance()
-                                          .getReference(Constants.FIREBASE_CHILD_MEETUP);
-
-            meetUpRef.push().setValue(mMeetUp);
+                                          .getReference(Constants.FIREBASE_CHILD_MEETUP)
+                                          .child(uid);
+            DatabaseReference pushRef = meetUpRef.push();
+            String pushId = pushRef.getKey();
+            mMeetUp.setPushId(pushId);
+            pushRef.setValue(mMeetUp);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }

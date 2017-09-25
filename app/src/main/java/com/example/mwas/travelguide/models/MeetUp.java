@@ -16,6 +16,7 @@ public class MeetUp {
      String venue1;
      String group;
      String group1;
+     private String pushId;
 
     public MeetUp(String name,String description, String venue, String venue1, String group, String group1){
         this.name = name;
@@ -53,5 +54,13 @@ public class MeetUp {
 
     public String getGroup1(){
         return group1; }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
+    }
 
 }
