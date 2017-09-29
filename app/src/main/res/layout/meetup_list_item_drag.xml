@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:background="#C0C0C0"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="5dp"
+                android:layout_margin="5dp">
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_margin="2dp">
+                    <TextView
+                        android:id="@+id/meetUpNameTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:text="One Cuisine Type"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/venueTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/meetUpNameTextView"
+                        android:text="One Cuisine Type" />
+
+                    <TextView
+                        android:id="@+id/venueAddressTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/venueTextView"
+                        android:text="One Cuisine Type" />
+
+                    <TextView
+                        android:id="@+id/groupNameTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/venueAddressTextView"
+                        android:text="One Cuisine Type" />
+                    <ImageView
+                        android:id="@+id/dragIcon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:gravity="bottom|right"
+                        android:background="#000000"
+                        android:src="@drawable/ic_reorder_white_24dp"/>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+    </RelativeLayout>
