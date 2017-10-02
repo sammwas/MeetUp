@@ -1,6 +1,9 @@
 package com.example.mwas.travelguide.adapters;
 
 import android.content.Context;
+import android.support.v4.view.MotionEventCompat;
+import android.view.MotionEvent;
+import android.view.View;
 
 import com.example.mwas.travelguide.models.MeetUp;
 import com.example.mwas.travelguide.util.ItemTouchHelperAdapter;
@@ -28,17 +31,27 @@ public class FirebaseMeetUpListAdapter extends FirebaseRecyclerAdapter<MeetUp, F
     }
 
     @Override
-    protected void populateViewHolder(FirebaseMeetUpViewHolder viewHolder, MeetUp model, int position) {
+    protected void populateViewHolder(final FirebaseMeetUpViewHolder viewHolder, MeetUp model, int position) {
         viewHolder.bindMeetUp(model);
+        viewHolder.mDragIcon.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN) {
+                    mOnStartDragListener.onStartDrag(viewHolder);
+                }
+                return false;
+            }
+        });
     }
 
     @Override
     public boolean onItemMove(int fromPosition, int toPosition) {
+        notifyItemMoved(fromPosition, toPosition);
         return false;
     }
 
     @Override
     public void onItemDismiss(int position) {
-
+        getRef(position).removeValue();
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mwas.travelguide.Constants;
@@ -27,6 +28,7 @@ import java.util.ArrayList;
 public class FirebaseMeetUpViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     View mView;
     Context mContext;
+    public ImageView mDragIcon;
 
     public FirebaseMeetUpViewHolder(View itemView){
         super(itemView);
@@ -37,10 +39,13 @@ public class FirebaseMeetUpViewHolder extends RecyclerView.ViewHolder implements
     }
 
     public void bindMeetUp(MeetUp meetUp){
+        mDragIcon = (ImageView) mView.findViewById(R.id.dragIcon);
+
         TextView nameTextView = (TextView) mView.findViewById(R.id.meetUpNameTextView);
         TextView venueTextView = (TextView) mView.findViewById(R.id.venueTextView);
         TextView addressTextView = (TextView) mView.findViewById(R.id.venueAddressTextView);
         TextView groupNameTextView = (TextView) mView.findViewById(R.id.groupNameTextView);
+
 
         nameTextView.setText(meetUp.getName());
         venueTextView.setText(meetUp.getVenue());
