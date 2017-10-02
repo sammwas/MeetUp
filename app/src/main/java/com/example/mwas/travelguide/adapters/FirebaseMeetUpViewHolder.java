@@ -3,6 +3,8 @@ package com.example.mwas.travelguide.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,6 +13,7 @@ import com.example.mwas.travelguide.Constants;
 import com.example.mwas.travelguide.R;
 import com.example.mwas.travelguide.models.MeetUp;
 import com.example.mwas.travelguide.ui.MeetUpDetailActivity;
+import com.example.mwas.travelguide.util.ItemTouchHelperViewHolder;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,7 +28,7 @@ import java.util.ArrayList;
  * Created by mwas on 9/22/17.
  */
 
-public class FirebaseMeetUpViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class FirebaseMeetUpViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder {
     View mView;
     Context mContext;
     public ImageView mDragIcon;
@@ -34,7 +37,6 @@ public class FirebaseMeetUpViewHolder extends RecyclerView.ViewHolder implements
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
-        itemView.setOnClickListener(this);
 
     }
 
@@ -54,30 +56,15 @@ public class FirebaseMeetUpViewHolder extends RecyclerView.ViewHolder implements
     }
 
     @Override
-    public void onClick(View view) {
-        final ArrayList<MeetUp> meetUps = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_MEETUP);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+    public void onItemSelected() {
+        Log.d("Animation", "onItemSelected");
+        // we will add animations here
+    }
 
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    meetUps.add(snapshot.getValue(MeetUp.class));
-                }
-
-                int itemPosition = getLayoutPosition();
-
-                Intent intent = new Intent(mContext, MeetUpDetailActivity.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("meetUps", Parcels.wrap(meetUps));
-
-                mContext.startActivity(intent);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
+    @Override
+    public void onItemClear() {
+        Log.d("Animation", "onItemClear");
+        // we will add animations here
     }
 
 }

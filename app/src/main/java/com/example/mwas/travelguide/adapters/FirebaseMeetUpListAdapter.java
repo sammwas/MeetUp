@@ -1,11 +1,13 @@
 package com.example.mwas.travelguide.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.MotionEventCompat;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.example.mwas.travelguide.models.MeetUp;
+import com.example.mwas.travelguide.ui.MeetUpDetailActivity;
 import com.example.mwas.travelguide.util.ItemTouchHelperAdapter;
 import com.example.mwas.travelguide.util.OnStartDragListener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -14,6 +16,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -77,6 +81,16 @@ public class FirebaseMeetUpListAdapter extends FirebaseRecyclerAdapter<MeetUp, F
                     mOnStartDragListener.onStartDrag(viewHolder);
                 }
                 return false;
+            }
+        });
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, MeetUpDetailActivity.class);
+                intent.putExtra("position", viewHolder.getAdapterPosition());
+                intent.putExtra("meetUps", Parcels.wrap(mMeetUps));
+                mContext.startActivity(intent);
             }
         });
     }
