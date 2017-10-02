@@ -9,8 +9,14 @@ import com.example.mwas.travelguide.models.MeetUp;
 import com.example.mwas.travelguide.util.ItemTouchHelperAdapter;
 import com.example.mwas.travelguide.util.OnStartDragListener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by mwas on 9/29/17.
@@ -20,6 +26,8 @@ public class FirebaseMeetUpListAdapter extends FirebaseRecyclerAdapter<MeetUp, F
     private DatabaseReference mRef;
     private OnStartDragListener mOnStartDragListener;
     private Context mContext;
+    private ChildEventListener  mChildEventListener;
+    private ArrayList<MeetUp> mMeetUps = new ArrayList<>();
 
     public FirebaseMeetUpListAdapter(Class<MeetUp> modelClass, int modelLayout,
                                      Class<FirebaseMeetUpViewHolder> viewHolderClass,
@@ -28,6 +36,35 @@ public class FirebaseMeetUpListAdapter extends FirebaseRecyclerAdapter<MeetUp, F
         mRef = ref.getRef();
         mOnStartDragListener = onStartDragListener;
         mContext = context;
+
+        mChildEventListener = mRef.addChildEventListener(new ChildEventListener() {
+
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                mMeetUps.add(dataSnapshot.getValue(MeetUp.class));
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     @Override
@@ -46,12 +83,30 @@ public class FirebaseMeetUpListAdapter extends FirebaseRecyclerAdapter<MeetUp, F
 
     @Override
     public boolean onItemMove(int fromPosition, int toPosition) {
+        Collections.swap(mMeetUps, fromPosition, toPosition);
         notifyItemMoved(fromPosition, toPosition);
         return false;
     }
 
     @Override
     public void onItemDismiss(int position) {
+        mMeetUps.remove(position);
         getRef(position).removeValue();
+    }
+
+    private void setIndexInFirebase() {
+        for (MeetUp meetUp : mMeetUps) {
+            int index = mMeetUps.indexOf(meetUp);
+            DatabaseReference ref = getRef(index);
+            meetUp.setIndex(Integer.toString(index));
+            ref.setValue(meetUp);
+        }
+    }
+
+    @Override
+    public void cleanup() {
+        super.cleanup();
+        setIndexInFirebase();
+        mRef.removeEventListener(mChildEventListener);
     }
 }

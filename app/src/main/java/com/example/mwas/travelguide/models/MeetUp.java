@@ -69,7 +69,7 @@ public class MeetUp {
         return index;
     }
 
-    public void setIndex() {
+    public void setIndex(String index) {
         this.index = index;
     }
 
