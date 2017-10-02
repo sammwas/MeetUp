@@ -17,6 +17,7 @@ public class MeetUp {
      String group;
      String group1;
      private String pushId;
+     String index;
 
     public MeetUp(String name,String description, String venue, String venue1, String group, String group1){
         this.name = name;
@@ -26,6 +27,7 @@ public class MeetUp {
         this.venue1 = venue1;
         this.group = group;
         this.group1 = group1;
+        this.index = "not_specified";
     }
 
     //empty meetup constructor needed by the Parceler library
@@ -61,6 +63,14 @@ public class MeetUp {
 
     public void setPushId(String pushId) {
         this.pushId = pushId;
+    }
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex() {
+        this.index = index;
     }
 
 }
